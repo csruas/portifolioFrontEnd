@@ -1,9 +1,11 @@
+import { Marca } from "./marcas";
+
 export class Carro {
   id!: number;
   nome!: string;
+  marca!: Marca;
 
-  constructor(id: number,nome: string){
-    this.id = id;
+  constructor(nome: string){
     this.nome = nome;
   }
 

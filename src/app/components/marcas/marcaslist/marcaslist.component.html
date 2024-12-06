@@ -1,1 +1,65 @@
-<p>marcaslist works!</p>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-g-12">
+      <div class="card">
+        <div class="card-boby">
+          <h3>Listagem de Marcas</h3>
+          <div class="direita">
+              <!--
+            <button type="button" class="btn btn-primary btn-rounded" data-mdb-ripple-init (click)="new()" >Novo</button>
+
+            <button type="button" class="btn btn-primary btn-rounded" data-mdb-ripple-init routerLink="/admin/carros/new" >Novo</button>
+            -->
+            <button type="button" class="btn btn-primary btn-rounded" data-mdb-ripple-init (click)="newMarca()" >Novo</button>
+          </div>
+          <br>
+          <table border="1" class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (marca of lista; track $index) {
+                <tr>
+                  <td>{{marca.id}}</td>
+                  <td>{{marca.nome}}</td>
+                  <td class="direita">
+
+                   <!-- <button type="button" class="btn btn-primary btn-rounded" data-mdb-ripple-init (click)="editMarca(marca)" >Editar</button>
+                    <button type="button" class="btn btn-primary btn-rounded" data-mdb-ripple-init routerLink="/admin/marcas/edit/{{marca.id}}" >Editar</button> -->
+                    @if(esconderBotoes){
+                      <button type="button" class="btn btn-primary btn-rounded" data-mdb-ripple-init (click)="select(marca)" >Selecionar</button>
+                    }@else {
+                      <button type="button" class="btn btn-primary btn-rounded" data-mdb-ripple-init (click)="edit(marca)" >Editar</button>
+                      <button type="button" class="btn btn-danger btn-rounded" data-mdb-ripple-init (click)="deleteById(marca)" >Deletar</button>
+                    }
+
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #modalMarcaDetalhe>
+  <div class="modal-header">
+    <h5 class="modal-title" id="ModalLabelaMarca">Cadastro de Marcas</h5>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modalref.close()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-marcasdetails [marca]="marcaEdit" (retorno)="retornoDetalheMarca($event)"></app-marcasdetails>
+  </div>
+</ng-template>
