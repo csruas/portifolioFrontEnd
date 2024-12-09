@@ -3,20 +3,21 @@ import { inject, Injectable } from '@angular/core';
 import { Carro } from '../models/carro';
 import { Observable } from 'rxjs';
 import { Marca } from '../models/marcas';
+import { Acessorio } from '../models/acessorio';
 
 @Injectable({
   providedIn: 'root'
 })
-export class MarcaService {
+export class AcessorioService {
 
   http = inject(HttpClient)
 
-  API = "http://localhost:8080/api/marcas";
+  API = "http://localhost:8080/api/acessorio";
 
   constructor() { }
 
-  findAll(): Observable<Marca []>{
-    return this.http.get<Marca[]>(this.API+"/findAll")
+  findAll(): Observable<Acessorio []>{
+    return this.http.get<Acessorio[]>(this.API+"/findAll")
   }
 
   update(marca: Marca, id: number): Observable<String>{

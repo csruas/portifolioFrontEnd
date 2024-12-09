@@ -1,1 +1,62 @@
-<p>acessoriolist works!</p>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-g-12">
+      <div class="card">
+        <div class="card-boby">
+          <h3>Listagem de Acessórios</h3>
+          <div class="direita">
+              <!--
+            <button type="button" class="btn btn-primary btn-rounded" data-mdb-ripple-init (click)="new()" >Novo</button>
+
+            <button type="button" class="btn btn-primary btn-rounded" data-mdb-ripple-init routerLink="/admin/carros/new" >Novo</button>
+            -->
+            <button type="button" class="btn btn-primary btn-primary" mdbRipple (click)="newAcessorio()">Novo</button>
+          </div>
+          <br>
+          <table border="1" class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Ações</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (acessorio of lista; track $index) {
+                <tr>
+                  <td>{{acessorio.id}}</td>
+                  <td>{{acessorio.nome}}</td>
+                  <td class="direita">
+                     @if(esconderBotoes){
+                       <button type="button" class="btn btn-primary btn-rounded" data-mdb-ripple-init (click)="select(acessorio)" >Selecionar</button>
+                     }@else {
+                       <button type="button" class="btn btn-primary btn-rounded" data-mdb-ripple-init (click)="edit(acessorio)" >Editar</button>
+                       <button type="button" class="btn btn-danger btn-rounded" data-mdb-ripple-init (click)="deleteById(acessorio)" >Deletar</button>
+                     }
+
+                   </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #modalAcessorioDetalhe>
+  <div class="modal-header">
+    <h5 class="modal-title" id="ModalLabelaAcessorio">Cadastro de Acessórios</h5>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modalref.close()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-acessoriodetails [acessorio]="acessorioEdit" (retorno)="retornoDetalheMarca($event)"></app-acessoriodetails>
+  </div>
+</ng-template>

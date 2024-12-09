@@ -6,11 +6,12 @@ import { MdbModalModule, MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit
 import { CarrosdetailsComponent } from "../carrosdetails/carrosdetails.component";
 import { CarroService } from '../../../services/carro.service';
 import { MarcaslistComponent } from '../../marcas/marcaslist/marcaslist.component';
+import { Marca } from '../../../models/marcas';
 
 @Component({
   selector: 'app-carroslist',
   standalone: true,
-  imports: [RouterLink, MdbModalModule, CarrosdetailsComponent, MarcaslistComponent],
+  imports: [RouterLink, MdbModalModule, CarrosdetailsComponent],
   templateUrl: './carroslist.component.html',
   styleUrl: './carroslist.component.scss'
 })
